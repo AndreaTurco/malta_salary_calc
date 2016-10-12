@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Modern Malta Salary Calculator</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/modern-business.css" rel="stylesheet">
+    <link href="css/slider.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -172,9 +177,14 @@
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.3.7</h4>
                     </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                    <div class="panel-body" ng-controller="DoughnutCtrl">
+                        <canvas id="doughnut" class="chart chart-doughnut"
+                          chart-data="data" chart-labels="labels">
+                        </canvas> 
+
+                        <input type="text" class="span2" id="ex6" value="" data-slider-min="0" data-slider-max="300000" data-slider-step="1000" data-slider-value="10000" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
+                        <span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal" ng-model="salary">10000</span> {{salary}}</span>
+
                     </div>
                 </div>
             </div>
@@ -298,6 +308,10 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="js/bootstrap-slider.js"></script>
 
     <script src="../node_modules/chart.js/dist/Chart.min.js"></script>
     <script src="../node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
@@ -306,7 +320,11 @@
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
-    })
+    });
+    $("#ex6").slider();
+    $("#ex6").on("slide", function(slideEvt) {
+        $("#ex6SliderVal").text(slideEvt.value);
+    });;
     </script>
 
 </body>
