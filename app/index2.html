@@ -20,7 +20,7 @@
 
 	<!-- Custom CSS -->
 	<link href="css/modern-business.css" rel="stylesheet">
-	<link href="css/slider.css" rel="stylesheet">
+	<!--<link href="css/slider.css" rel="stylesheet">-->
 	<link rel="stylesheet" type="text/css" href="../node_modules/angularjs-slider/dist/rzslider.css"/>
 
 	<!-- Custom Fonts -->
@@ -183,13 +183,12 @@
 						  chart-data="data" chart-labels="labels">
 						</canvas> 
 
-						<input type="text" class="span2" id="ex6" value="" data-slider-min="0" data-slider-max="300000" data-slider-step="1000" data-slider-value="10000" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-						<span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal" ng-model="salary">10000</span> {{salary}}</span>
+						<!--<input type="text" class="span2" id="ex6" value="" data-slider-min="0" data-slider-max="300000" data-slider-step="1000" data-slider-value="10000" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
+						<span id="ex6CurrentSliderValLabel">Current Slider Value: <span id="ex6SliderVal" ng-model="salary">10000</span> {{salary}}</span>-->
+                        <rzslider rz-slider-model="slider.value"
+                                  rz-slider-options="slider.options"></rzslider>
 
-						<rzslider
-					    rz-slider-model="slider.minValue"
-					    rz-slider-high="slider.options.maxlimit"
-					    rz-slider-options="slider.options"></rzslider>
+                        <span class="slider_value">value {{ slider.value }}</span>
 
 					</div>
 				</div>
@@ -314,10 +313,10 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
   <script src="app.js"></script>
-  <script src="js/bootstrap-slider.js"></script>
+  <!--<script src="js/bootstrap-slider.js"></script>-->
 
 	<script src="../node_modules/chart.js/dist/Chart.min.js"></script>
 	<script src="../node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
@@ -329,10 +328,7 @@
 	$('.carousel').carousel({
 		interval: 5000 //changes the speed
 	});
-	$("#ex6").slider();
-	$("#ex6").on("slide", function(slideEvt) {
-		$("#ex6SliderVal").text(slideEvt.value);
-	});;
+
 	</script>
 
 </body>
