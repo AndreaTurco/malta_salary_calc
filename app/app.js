@@ -6,6 +6,7 @@ angular.module('myApp', [
     ])
     .controller("DoughnutCtrl", function ($scope) {
         $scope.user_state = 0;
+        
         $scope.salary_limit = {
             0: [
                 9100, 14500, 60000
